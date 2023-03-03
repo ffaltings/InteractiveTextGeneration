@@ -4,7 +4,9 @@ This project offers an implementation of the paper:
 
 **Interactive Text Generation**\
 Felix Faltings, Michel Galley, Baolin Peng, Kianté Brantley, Weixin Cai, Yizhe Zhang, Jianfeng Gao, Bill Dolan\
-arXiv
+[arXiv](https://arxiv.org/abs/2303.00908)
+
+<img src="images/motivation.png" width="70%">
 
 # Installation
  
