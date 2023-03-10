@@ -10,7 +10,9 @@ Felix Faltings, Michel Galley, Baolin Peng, Kianté Brantley, Weixin Cai, Yizhe 
 
 # Installation
  
-Install dependencies using requirements.txt (with pip) or environment.yaml (with conda). Then, install the package. From the top level directory (where `setup.py` is located), run:
+Install dependencies using requirements.txt:
+`pip install -r requirements.txt`
+Then, install the package. From the top level directory (where `setup.py` is located), run:
 `pip install -e .`
 This will install this package as an editable module named `infosol`. 
 
@@ -18,7 +20,7 @@ Download model files [here](https://1drv.ms/u/s!AshEqwB44aR6n5JmyZ-8XvvYZ56xTw?e
 
 # DATA
 
-You can regenerate the data used in the paper using the `make_data.py` script. You only need to specify the `data_dir` argument where the data will be saved (under `data_dir/cnn_bart`). This script first downloads the raw data from the Huggingface hub.
+You can regenerate the data used in the paper using the `make_data.py` script. You only need to specify the `data_dir` argument where the data will be saved (under `data_dir/cnn_bart`). This script first downloads the raw data (CNN/DailyMail) from the Huggingface hub. The script can easily be adapted to generate other textual datasets from the hub.
  
 # Test
  
@@ -30,7 +32,7 @@ The above command creates jobs files in 'jobs' directory, as well as the directo
  
 python scripts/run_eval.py --args_path jobs/interactive/cnn-bart-s2s --cuda_device 0
 
-Note: The S2S experiments of the paper yield generation that were inconsisent in length and hurt S2S performance. Thus, we tuned its length_penalty hyperparameter on a held out set, and the corresponding job files can be found in s2s-jobs.txt.
+Note: The S2S experiments of the paper yield generation that were inconsisent in length and hurt S2S performance. Thus, we tuned its length_penalty hyperparameter on a held out set, and the corresponding job files can be found in jobs/s2s.txt.
  
 # Train
  
