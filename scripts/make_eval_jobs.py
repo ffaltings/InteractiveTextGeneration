@@ -92,13 +92,13 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--job_dir', type=str,
-                    default='') # where to write job args
+                    default='jobs') # where to write job args
     parser.add_argument('--model_dir', type=str,
-                        default='') # where to find model checkpoints
+                        default='models') # where to find model checkpoints
     parser.add_argument('--out_dir', type=str,
-                        default='') # where evaluation jobs should write results
+                        default='out') # where evaluation jobs should write results
     parser.add_argument('--data_dir', type=str,
-                        default='') # data dir
+                        default='data') # data dir
     args = parser.parse_args()
 
     # MAIN ============================
@@ -118,7 +118,7 @@ if __name__ == '__main__':
     out_dir = os.path.join(args.out_dir, 'main')
     out_path = os.path.join(out_dir, 'main.pickle')
     data_dir = args.data_dir
-    data_path = os.path.join(data_dir, 'cnn', 'filtered_bart_64')
+    data_path = os.path.join(data_dir, 'cnn_bart')
     max_data = 2000
     idf_path = os.path.join(data_dir, 'misc', 'cnn_bart_idfs.pickle')
     n_episodes = 4

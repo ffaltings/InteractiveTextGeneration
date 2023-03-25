@@ -122,7 +122,7 @@ def make_cnn_data(tokenizer):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_dir', type=str, default='') # where to save data
+    parser.add_argument('--data_dir', type=str, default='data') # where to save data
     args = parser.parse_args()
 
     bart_tokenizer = AutoTokenizer.from_pretrained('facebook/bart-base')

@@ -1,0 +1,10 @@
+*.pyc
+infosol_models.tar.zst
+data/
+models/
+jobs/main/
+jobs/interactive/cnn-bart-editor
+jobs/interactive/cnn-bart-s2s
+jobs/interactive/cnn-bart_editor_large
+out/
+infosol.egg-info/

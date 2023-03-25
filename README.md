@@ -16,23 +16,26 @@ Then, install the package. From the top level directory (where `setup.py` is loc
 `pip install -e .`
 This will install this package as an editable module named `infosol`. 
 
-Download model files [here](https://1drv.ms/u/s!AshEqwB44aR6n5JmyZ-8XvvYZ56xTw?e=iV2YCh).
+Download model files (requires wget and zstd):
+`sh ./scripts/dowload_models.sh`
 
 # DATA
 
-You can regenerate the data used in the paper using the `make_data.py` script. You only need to specify the `data_dir` argument where the data will be saved (under `data_dir/cnn_bart`). This script first downloads the raw data (CNN/DailyMail) from the Huggingface hub. The script can easily be adapted to generate other textual datasets from the hub.
+You can regenerate the data used in the paper using the `make_data.py` script. You only need to specify the `data_dir` argument where the data will be saved (under `data/cnn_bart`). This script first downloads the raw data (CNN/DailyMail) from the Huggingface hub. The script can easily be adapted to generate other textual datasets from the hub.
+
+`python scripts/make_data.py --data_dir=data`
  
 # Test
  
 To replicate the main experiments of the paper, run:
  
-scripts/make_eval_jobs.py
+`python scripts/make_eval_jobs.py --model_dir=models --data_dir=data/cnn --job_dir=jobs --out_dir=out`
  
-The above command creates jobs files in 'jobs' directory, as well as the directory structure ('out') where test results will be stored. Then, you can pass any of the configuration files under 'jobs' as argument to scripts/run_eval.py. For example, run the following to replicate the S2S 'interactive' experiments (Table 4 of the paper):
+The above command creates jobs files in 'jobs' directory, as well as the directory structure ('out') where test results will be stored. Then, you can pass any of the configuration files under 'jobs' as argument to `scripts/run_eval.py`. For example, run the following to replicate the BART-large 'interactive' experiments (Table 4 of the paper):
  
-python scripts/run_eval.py --args_path jobs/interactive/cnn-bart-s2s --cuda_device 0
+`python scripts/run_eval.py --args_path jobs/interactive/cnn-bart_editor_large --cuda_device 0`
 
-Note: The S2S experiments of the paper yield generation that were inconsisent in length and hurt S2S performance. Thus, we tuned its length_penalty hyperparameter on a held out set, and the corresponding job files can be found in jobs/s2s.txt.
+Note: The S2S experiments of the paper yield generation that were inconsisent in length and hurt S2S performance. Thus, we tuned its length_penalty hyperparameter on a held out set, and the corresponding job files can be found in jobs/interactive/cnn-bart-s2s-len.
  
 # Train
  
